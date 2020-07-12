@@ -28,29 +28,32 @@
     $_SESSION['start'] = 1;
   }
     if (isset($_POST['submit'])) {
-      if ($_POST['input'] == "steen") {
-        $inputworth = 1;
-        $samples = array(
-          '2' => 0.1/1+$_SESSION['sc'],
-          '3' => 0.1/1+$_SESSION['ss'],
-          '4' => 0.1/1+$_SESSION['sp'],
-        );
-      } else if ($_POST['input'] == "papier") {
-        $inputworth = 2;
-        $samples = array(
-          '2' => 0.1/1+$_SESSION['pc'],
-          '3' => 0.1/1+$_SESSION['ps'],
-          '4' => 0.1/1+$_SESSION['pp'],
-        );
-      } else if ($_POST['input'] == "schaar") {
-        $inputworth = 3;
-        $samples = array(
-          '2' => 0.1/1+$_SESSION['cc'],
-          '3' => 0.1/1+$_SESSION['cs'],
-          '4' => 0.1/1+$_SESSION['cp'],
-        );
-      } else {
-        echo "dit is geen mogelijke optie!";
+      switch($_POST['input']) {
+        case "steen":
+          $inputworth = 1;
+          $samples = array(
+            '2' => 0.1/1+$_SESSION['sc'],
+            '3' => 0.1/1+$_SESSION['ss'],
+            '4' => 0.1/1+$_SESSION['sp'],
+          );
+          break;
+        case "papier":
+          $inputworth = 2;
+          $samples = array(
+            '2' => 0.1/1+$_SESSION['pc'],
+            '3' => 0.1/1+$_SESSION['ps'],
+            '4' => 0.1/1+$_SESSION['pp'],
+          );
+          break;
+        case "schaar";
+          $inputworth = 3;
+          $samples = array(
+            '2' => 0.1/1+$_SESSION['cc'],
+            '3' => 0.1/1+$_SESSION['cs'],
+            '4' => 0.1/1+$_SESSION['cp'],
+          );
+        default:
+          echo "dit is geen mogelijke optie!";
       }
 
       class Accumulator {
